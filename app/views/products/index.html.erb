@@ -1,17 +1,9 @@
-<% first_product = Product.first %>
-<% product = Product.where(:name => 'rails book').first %>
-<% cheap_product = Product.where('price < 20').first %>
-
-<p>
-	The cheap product's price is $<%= cheap_product.price %> and it's owner's name is <%= cheap_product.user.name %>
-</p>
-
-<p>
-	Product Name: "<%= first_product.name %>"" costs $<%= first_product.price %>
-</p>
-<p>
-	The seller for this product is named '<%= first_product.user.name %>'
-</p>
-<p>
-	There are currently <%= Product.count %> products in the database.
-</p>
+<% lots_of_products = Product.includes(:user).all %>
+<ul>
+	<% lots_of_products.each do |product| %>
+		<li>
+			Product Name: "<%= product.name %>"" costs $<%= product.price %>
+			Sold by: <%= product.user.name %>
+		</li>
+	<% end %>
+</ul>
