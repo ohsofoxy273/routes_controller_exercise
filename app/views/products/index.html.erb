@@ -1,3 +1,4 @@
+
 <% lots_of_products = Product.includes(:user).all %>
 <ul>
 	<% lots_of_products.each do |product| %>
@@ -7,3 +8,4 @@
 		</li>
 	<% end %>
 </ul>
+
